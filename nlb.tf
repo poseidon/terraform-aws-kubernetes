@@ -71,8 +71,9 @@ resource "aws_lb_target_group" "controllers" {
 
   # TCP health check for apiserver
   health_check {
-    protocol = "TCP"
+    protocol = "HTTPS"
     port     = 6443
+    path     = "/healthz"
 
     # NLBs required to use same healthy and unhealthy thresholds
     healthy_threshold   = 3
