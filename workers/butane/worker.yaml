@@ -1,4 +1,5 @@
----
+variant: flatcar
+version: 1.0.0
 systemd:
   units:
     - name: docker.service
@@ -106,13 +107,11 @@ systemd:
 storage:
   files:
     - path: /etc/kubernetes/kubeconfig
-      filesystem: root
       mode: 0644
       contents:
         inline: |
           ${kubeconfig}
     - path: /etc/sysctl.d/max-user-watches.conf
-      filesystem: root
       mode: 0644
       contents:
         inline: |
